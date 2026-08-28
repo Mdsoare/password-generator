@@ -1,16 +1,30 @@
 {
-  "name": "gerador-senhas",
+  "name": "password-generator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "![CI Pipeline](https://github.com/Mdsoare/password-generator/actions/workflows/ci.yml/badge.svg)\r [![Security Rating](https://img.shields.io/badge/Security-DevSecOps%20Hardened-green?style=flat&logo=github)](https://github.com/Mdsoare/password-generator/security/code-scanning)\r ![Security: CSP Compliant](https://img.shields.io/badge/Security-CSP--Compliant-success.svg)\r ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)\r <!-- Badges de Linguagens, Ecossistema e DevSecOps -->\r ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)\r ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)\r ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)\r ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)\r ![NPM](https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=npm&logoColor=white)\r ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)\r ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)\r ![Dependabot](https://img.shields.io/badge/Dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white)\r ![SAST & SCA](https://img.shields.io/badge/DevSecOps-SAST%20%26%20SCA-red?style=for-the-badge&logo=shield&logoColor=white)",
+  "main": "assets/js/script.js",
+  "type": "module",
   "scripts": {
+    "lint:html": "htmlhint index.html",
+    "lint:css": "stylelint assets/css/*.css",
+    "lint:js": "eslint assets/js/*.js",
+    "lint:md": "markdownlint-cli2 \"**/*.md\"",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js && npm run lint:md",
+    "lint:css:fix": "stylelint assets/css/*.css --fix",
+    "lint:js:fix": "eslint assets/js/*.js --fix",
+    "lint:md:fix": "markdownlint-cli2 --fix \"**/*.md\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "author": "Marcelo Soares",
+  "license": "MIT",
   "devDependencies": {
-    "globals": "^17.11.0"
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.9.1",
+    "globals": "^17.11.0",
+    "htmlhint": "^1.9.2",
+    "markdownlint-cli2": "^0.23.2",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard": "^40.0.0"
   }
 }

@@ -1,4 +1,4 @@
-# Configuração do GitHub Dependabot para o Password Generator
+# Configuração do GitHub Dependabot para o Cripto Hash Toolkit
 version: 2
 updates:
   # 1. GitHub Actions (Workflows e Reusable Actions)
@@ -9,6 +9,8 @@ updates:
       day: "monday"
       time: "09:00"
       timezone: "America/Sao_Paulo"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     labels:
       - "dependencies"
@@ -25,7 +27,7 @@ updates:
         patterns:
           - "*"
 
-  # 2. JavaScript / Node.js (DevDependencies: ESLint, HTMLHint)
+  # 2. JavaScript / Node.js (DevDependencies: ESLint, HTMLHint, Stylelint)
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -33,6 +35,8 @@ updates:
       day: "monday"
       time: "09:00"
       timezone: "America/Sao_Paulo"
+    cooldown:
+      default-days: 7
     open-pull-requests-limit: 5
     labels:
       - "dependencies"
@@ -40,3 +44,9 @@ updates:
     commit-message:
       prefix: "fix(deps-js)"
       include: "scope"
+    groups:
+      linting-tools:
+        patterns:
+          - "eslint*"
+          - "stylelint*"
+          - "htmlhint*"
