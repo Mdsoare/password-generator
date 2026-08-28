@@ -285,8 +285,7 @@ jobs:
         run: |
           test -f index.html || (echo "❌ index.html não encontrado!" && exit 1)
           test -f assets/js/script.js || (echo "❌ assets/js/script.js não encontrado!" && exit 1)
-          test -f assets/js/sha3.js || (echo "❌ assets/js/sha3.js não encontrado!" && exit 1)
-
+          
           # Verifica se existe pelo menos um arquivo .css na pasta assets/css/
           if ! ls assets/css/*.css 1> /dev/null 2>&1; then
             echo "❌ Nenhum arquivo CSS encontrado em assets/css/!"
