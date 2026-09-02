@@ -1,8 +1,8 @@
-name: OWASP ZAP DAST Post-Deploy Scan
+name: OWASP ZAP & Nuclei DAST Scan
 
 on:
   workflow_run:
-    workflows: ["pages-build-deployment"] # Nome exato da action nativa do GitHub Pages
+    workflows: ["pages-build-deployment"]
     types:
       - completed
 
@@ -38,8 +38,8 @@ jobs:
           name: zap-dast-html-report
           path: report_html.html
           retention-days: 14
-  
-    # -------------------------------------------------------------
+
+  # -------------------------------------------------------------
   # JOB 2: DAST (Nuclei Scan)
   # -------------------------------------------------------------
   dast-nuclei:
