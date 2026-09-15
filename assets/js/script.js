@@ -1,8 +1,8 @@
 const charPools = {
-    upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    lower: "abcdefghijklmnopqrstuvwxyz",
-    num: "0123456789",
-    sym: "!@#$%^&*()_+-=[]{}|;:,.<>?"
+    upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    lower: 'abcdefghijklmnopqrstuvwxyz',
+    num: '0123456789',
+    sym: '!@#$%^&*()_+-=[]{}|;:,.<>?'
 };
 
 const lengthSlider = document.getElementById('passLength');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
  */
 function resetDisplayState() {
     const display = document.getElementById('passwordDisplay');
-    display.textContent = "Clique em 'Gerar Nova Senha'";
+    display.textContent = 'Clique em \'Gerar Nova Senha\'';
     updateEntropyMetrics(0);
 }
 
@@ -36,7 +36,7 @@ function clearPasswordDisplay() {
     resetDisplayState();
 
     // Sobreve o clipboard para garantir que a credencial não fique salva na memória do sistema
-    navigator.clipboard.writeText("").catch(() => {
+    navigator.clipboard.writeText('').catch(() => {
         // Trata a rejeição caso a janela esteja sem foco
     });
 
@@ -81,7 +81,7 @@ function generateSecurePassword() {
     const useSym = document.getElementById('chkSym').checked;
 
     const activePools = [];
-    let combinedPool = "";
+    let combinedPool = '';
 
     if (useUpper) { activePools.push(charPools.upper); combinedPool += charPools.upper; }
     if (useLower) { activePools.push(charPools.lower); combinedPool += charPools.lower; }
@@ -91,7 +91,7 @@ function generateSecurePassword() {
     const display = document.getElementById('passwordDisplay');
 
     if (activePools.length === 0 || length < activePools.length) {
-        display.textContent = "[Erro: Comprimento insuficiente ou nenhuma opção selecionada]";
+        display.textContent = '[Erro: Comprimento insuficiente ou nenhuma opção selecionada]';
         updateEntropyMetrics(0);
         return;
     }
@@ -128,11 +128,11 @@ function updateEntropyMetrics(bits) {
     const panel = document.getElementById('entropyPanel');
 
     if (bits === 0) {
-        label.textContent = "Entropia: 0 Bits";
-        bar.style.width = "0%";
-        bar.style.backgroundColor = "var(--border)";
-        panel.style.borderColor = "var(--border)";
-        timeLabel.textContent = "Aguardando geração de senha...";
+        label.textContent = 'Entropia: 0 Bits';
+        bar.style.width = '0%';
+        bar.style.backgroundColor = 'var(--border)';
+        panel.style.borderColor = 'var(--border)';
+        timeLabel.textContent = 'Aguardando geração de senha...';
         return;
     }
 
@@ -141,39 +141,39 @@ function updateEntropyMetrics(bits) {
     bar.style.width = `${percentage}%`;
 
     if (bits < 60) {
-        bar.style.backgroundColor = "var(--danger)";
-        panel.style.borderColor = "var(--danger)";
-        timeLabel.textContent = "Força Bruta Estimada: Vulnerável (Quebra em minutos por clusters domésticos).";
+        bar.style.backgroundColor = 'var(--danger)';
+        panel.style.borderColor = 'var(--danger)';
+        timeLabel.textContent = 'Força Bruta Estimada: Vulnerável (Quebra em minutos por clusters domésticos).';
     } else if (bits < 80) {
-        bar.style.backgroundColor = "var(--warning)";
-        panel.style.borderColor = "var(--warning)";
-        timeLabel.textContent = "Força Bruta Estimada: Força moderada (Exige semanas para quebra em supercomputadores).";
+        bar.style.backgroundColor = 'var(--warning)';
+        panel.style.borderColor = 'var(--warning)';
+        timeLabel.textContent = 'Força Bruta Estimada: Força moderada (Exige semanas para quebra em supercomputadores).';
     } else {
-        bar.style.backgroundColor = "var(--success)";
-        panel.style.borderColor = "var(--success)";
-        timeLabel.textContent = "Força Bruta Estimada: Excelente resiliência (Trilhões de anos usando tecnologia atual).";
+        bar.style.backgroundColor = 'var(--success)';
+        panel.style.borderColor = 'var(--success)';
+        timeLabel.textContent = 'Força Bruta Estimada: Excelente resiliência (Trilhões de anos usando tecnologia atual).';
     }
 }
 
 function copyToClipboard() {
     const txt = document.getElementById('passwordDisplay').textContent;
 
-    if (txt.startsWith("[Erro") || txt.startsWith("Clique em")) return;
+    if (txt.startsWith('[Erro') || txt.startsWith('Clique em')) return;
 
     navigator.clipboard.writeText(txt).then(() => {
         const btn = document.getElementById('copyBtn');
-        btn.textContent = "Copiado!";
-        btn.style.backgroundColor = "var(--success)";
+        btn.textContent = 'Copiado!';
+        btn.style.backgroundColor = 'var(--success)';
 
         // Limpa a área de transferência automaticamente após 45 segundos por segurança
         if (clearClipboardTimeout) clearTimeout(clearClipboardTimeout);
         clearClipboardTimeout = setTimeout(() => {
-            navigator.clipboard.writeText("");
+            navigator.clipboard.writeText('');
         }, 45000);
 
         setTimeout(() => {
-            btn.textContent = "Copiar";
-            btn.style.backgroundColor = "var(--accent)";
+            btn.textContent = 'Copiar';
+            btn.style.backgroundColor = 'var(--accent)';
         }, 1500);
     });
 }
