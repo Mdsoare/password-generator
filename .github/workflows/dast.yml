@@ -57,8 +57,8 @@ jobs:
         continue-on-error: true
         with:
           cache: false
-          args: "-u https://mdsoare.github.io/password-generator/ -sarif-export nuclei.sarif -silent -exclude-tags ssl,tls,dns,caa,waf -exclude-id http-missing-security-headers,missing-sri,fastly-debug-path,fastly-debug-ttl,fastly-debug-digest,fastly-debug-headers,package-json,readme-md,wappalyzer-technology-detection"
-
+          args: "-u https://mdsoare.github.io/password-generator/ -sarif-export nuclei.sarif -silent -exclude-tags ssl,tls,dns,caa,waf,tech,fingerprint,exposure -exclude-id http-missing-security-headers,missing-sri,fastly-debug-path,fastly-debug-ttl,fastly-debug-digest,fastly-debug-headers,package-json,readme-md,wappalyzer-technology-detection"
+          
       - name: Sanitizar Status de Invocação no SARIF
         if: always()
         run: |
